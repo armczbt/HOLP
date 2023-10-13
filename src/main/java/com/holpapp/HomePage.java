@@ -1,42 +1,45 @@
 package com.holpapp;
-import java.util.Scanner;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class HomePage {
-    public HomePage(){
-        
-    }
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        JFrame frame = new JFrame("Welcome");
+        frame.setSize(300, 150);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
 
-        System.out.println("Welcome to HOLP");
+        JPanel panel = new JPanel();
+        frame.add(panel);
 
-        while (true) {
-            System.out.println("1. Sign Up");
-            System.out.println("2. Log In");
+        JLabel label = new JLabel("Welcome to the HOLP");
+        panel.add(label);
 
-            int choice = scanner.nextInt();
+        JButton registerButton = new JButton("Register");
+        panel.add(registerButton);
 
-            switch (choice) {
-                case 1:
-                    System.out.println("Option Sign Up chosen.");
-                    // Open the registration form
-                    RegisterForm registerForm = new RegisterForm();
-                    registerForm.setVisible(true);
-                    break;
-                case 2:
-                    System.out.println("Option Log In chosen.");
-                    // Open the login form
-                    LoginForm loginForm = new LoginForm();
-                    loginForm.setVisible(true);
-                    break;
-                case 3:
-                    System.out.println("Thank you for using the application. Goodbye!");
-                    System.exit(0);
-                default:
-                    System.out.println("Invalid option. Please enter 1, 2, or 3.");
+        JButton loginButton = new JButton("Log In");
+        panel.add(loginButton);
+
+        // Action listener for the Register button
+        registerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                RegisterForm registerForm = new RegisterForm();
+                registerForm.setVisible(true);
             }
-        }
+        });
+
+        // Action listener for the Log In button
+        loginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                LoginForm loginForm = new LoginForm();
+                loginForm.setVisible(true);
+            }
+        });
+
+        frame.setVisible(true);
     }
-
-
 }
