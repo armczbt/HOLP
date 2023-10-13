@@ -2,10 +2,12 @@ package com.holpapp;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.BorderLayout;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
 
 public class RegisterForm extends JFrame {
 
@@ -21,12 +23,15 @@ public class RegisterForm extends JFrame {
 
     public RegisterForm() {
         setTitle("Register Form");
-        setSize(250, 450); 
+        setSize(250, 750); 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
         JPanel panel = new JPanel();
         add(panel);
+
+        JLabel imageLabel = new JLabel(new ImageIcon("public/img/HolpLittle.png"));
+        add(imageLabel, BorderLayout.NORTH);
 
         JLabel nameLabel = new JLabel("Name:");
         nameText = new JTextField(20);
