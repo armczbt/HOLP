@@ -13,7 +13,9 @@ public class HomePage {
         JPanel panel = new JPanel();
         frame.add(panel);
 
-        JLabel label = new JLabel("Welcome to the HOLP");
+        frame.setTitle("HomePage");
+
+        JLabel label = new JLabel("Welcome to HOLP");
         panel.add(label);
 
         JButton registerButton = new JButton("Register");
