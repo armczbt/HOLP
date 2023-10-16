@@ -1,60 +1,75 @@
 package com.holpapp;
 import javax.swing.*;
+
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.BorderLayout;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 public class TypeUser extends JFrame {
     
-    public TypeUser() {
-        setTitle("Type of User");
-        setSize(250, 750); 
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
 
-        JPanel panel = new JPanel();
-        add(panel);
+        public TypeUser() {
+            setTitle("Type of User");
+            setSize(500, 500);
+            setDefaultCloseOperation(EXIT_ON_CLOSE);
+            setLocationRelativeTo(null);
 
-        JLabel label = new JLabel("PLease choose the type of user you want to be :");
-        panel.add(label);
+            JPanel panel = new JPanel(new GridLayout(3, 3, 0, 0));
+            panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+            add(panel);
 
-        JButton helperButton = new JButton("Helper");
-        panel.add(helperButton);
+            JLabel label = new JLabel("Please choose the type of user:");
+            panel.add(label);
 
-        JButton neederButton = new JButton("Needer");
-        panel.add(neederButton);
+            ImageIcon helperIcon = new ImageIcon("public/img/Heart.webp");
+            JLabel helperLabel = new JLabel(helperIcon);
+            panel.add(helperLabel);
 
-        JButton validatingUserButton = new JButton("Validating User");
-        panel.add(validatingUserButton);
+            ImageIcon neederIcon = new ImageIcon("public/img/Admin.webp");
+            JLabel neederLabel = new JLabel(neederIcon);
+            panel.add(neederLabel);
 
-        helperButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                HelperForm helperForm = new HelperForm();
-                helperForm.setVisible(true);
-            }
-        });
+            ImageIcon validatingUserIcon = new ImageIcon("public/img/Admin.webp");
+            JLabel validatingUserLabel = new JLabel(validatingUserIcon);
+            panel.add(validatingUserLabel);
 
-        neederButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            NeederForm neederForm = new NeederForm();
-            neederForm.setVisible(true);
-            }
-        });
+            JButton helperButton = new JButton("Helper");
+            panel.add(helperButton);
 
-        validatingUserButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            ValidatingUserFrom validatingUserFrom = new ValidatingUserFrom();
-            validatingUserFrom.setVisible(true);
-            }
-        });
+            JButton neederButton = new JButton("Needer");
+            panel.add(neederButton);
 
+            JButton validatingUserButton = new JButton("Validating User");
+            panel.add(validatingUserButton);
+
+            helperButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    HelperForm helperForm = new HelperForm();
+                    helperForm.setVisible(true);
+                }
+            });
+
+            neederButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    NeederForm neederForm = new NeederForm();
+                    neederForm.setVisible(true);
+                }
+            });
+
+            validatingUserButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    ValidatingUserForm validatingForm = new ValidatingUserForm();
+                    validatingForm.setVisible(true);
+                }
+            });
+     
+    }
+    public static void main(String[] args) {
+        TypeUser typeUser = new TypeUser();
+        typeUser.setVisible(true);
     }
 
 
