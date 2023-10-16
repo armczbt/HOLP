@@ -3,6 +3,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -27,53 +29,65 @@ public class RegisterForm extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
+        Font labelFont = new Font("Nunito", Font.BOLD, 14);
+
         JPanel panel = new JPanel();
+        panel.setBackground(new Color(255, 255, 255, 200));
         add(panel);
 
         JLabel imageLabel = new JLabel(new ImageIcon("public/img/HolpLittle.png"));
         add(imageLabel, BorderLayout.NORTH);
 
-        JLabel nameLabel = new JLabel("Name:");
+        JLabel nameLabel = new JLabel("Name");
         nameText = new JTextField(20);
+        nameLabel.setFont(labelFont);
         panel.add(nameLabel);
         panel.add(nameText);
 
-        JLabel surnameLabel = new JLabel("Surname:");
+        JLabel surnameLabel = new JLabel("Surname");
         surnameText = new JTextField(20);
+        surnameLabel.setFont(labelFont);
         panel.add(surnameLabel);
         panel.add(surnameText);
 
-        JLabel birthdateLabel = new JLabel("Birthdate (YYYY-MM-DD):");
+        JLabel birthdateLabel = new JLabel("Birthdate (YYYY-MM-DD)");
         birthdateText = new JTextField(20);
+        birthdateLabel.setFont(labelFont);
         panel.add(birthdateLabel);
         panel.add(birthdateText);
 
-        JLabel emailLabel = new JLabel("Email:");
+        JLabel emailLabel = new JLabel("Email");
         emailText = new JTextField(20);
+        emailLabel.setFont(labelFont);
         panel.add(emailLabel);
         panel.add(emailText);
 
-        JLabel phoneLabel = new JLabel("Phone:");
+        JLabel phoneLabel = new JLabel("Phone");
         phoneText = new JTextField(20);
+        phoneLabel.setFont(labelFont);
         panel.add(phoneLabel);
         panel.add(phoneText);
 
-        JLabel addressLabel = new JLabel("Address:");
+        JLabel addressLabel = new JLabel("Address");
         addressText = new JTextField(20);
+        addressLabel.setFont(labelFont);
         panel.add(addressLabel);
         panel.add(addressText);
 
-        JLabel passwordLabel = new JLabel("Password:");
+        JLabel passwordLabel = new JLabel("Password");
         passwordText = new JPasswordField(20);
+        passwordLabel.setFont(labelFont);
         panel.add(passwordLabel);
         panel.add(passwordText);
 
-        JLabel confirmPasswordLabel = new JLabel("Confirm password:");
+        JLabel confirmPasswordLabel = new JLabel("Confirm password");
         confirmPasswordText = new JPasswordField(20);
+        confirmPasswordLabel.setFont(labelFont);
         panel.add(confirmPasswordLabel);
         panel.add(confirmPasswordText);
 
         JButton registerButton = new JButton("Register");
+        registerButton.setFont(labelFont);
         panel.add(registerButton);
 
         // Ajout d'un ActionListener pour le bouton "Register"
@@ -136,6 +150,7 @@ public class RegisterForm extends JFrame {
             return false;
         }
     }
+    
 
     public static void main(String[] args) {
         RegisterForm registerForm = new RegisterForm();
