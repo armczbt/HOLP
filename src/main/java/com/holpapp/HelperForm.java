@@ -6,7 +6,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class HelperForm extends JFrame {
-    private JTextField nameText;
 
     public HelperForm() {
         setTitle("Helper Form");
