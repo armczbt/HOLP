@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 
 public class ValidatingUserForm extends JFrame {
     public ValidatingUserForm() {
-        setTitle("Helper Form");
+        setTitle("Validating User Form");
         setSize(250, 750); 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
