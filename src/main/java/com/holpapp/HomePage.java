@@ -24,7 +24,6 @@ public class HomePage {
         JButton loginButton = new JButton("Log In");
         panel.add(loginButton);
 
-        // Action listener for the Register button
         registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -33,7 +32,6 @@ public class HomePage {
             }
         });
 
-        // Action listener for the Log In button
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
