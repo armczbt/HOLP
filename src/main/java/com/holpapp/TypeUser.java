@@ -1,7 +1,8 @@
 package com.holpapp;
 import javax.swing.*;
 
-import java.awt.GridLayout;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,33 +15,24 @@ public class TypeUser extends JFrame {
             setDefaultCloseOperation(EXIT_ON_CLOSE);
             setLocationRelativeTo(null);
 
-            JPanel panel = new JPanel(new GridLayout(3, 3, 0, 0));
+            JPanel panel = new JPanel(new BorderLayout());
             panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
             add(panel);
 
             JLabel label = new JLabel("Please choose the type of user:");
-            panel.add(label);
+            panel.add(label, BorderLayout.NORTH);
 
-            ImageIcon helperIcon = new ImageIcon("public/img/Heart.webp");
-            JLabel helperLabel = new JLabel(helperIcon);
-            panel.add(helperLabel);
-
-            ImageIcon neederIcon = new ImageIcon("public/img/Admin.webp");
-            JLabel neederLabel = new JLabel(neederIcon);
-            panel.add(neederLabel);
-
-            ImageIcon validatingUserIcon = new ImageIcon("public/img/Admin.webp");
-            JLabel validatingUserLabel = new JLabel(validatingUserIcon);
-            panel.add(validatingUserLabel);
+            JPanel buttonPanel = new JPanel(new FlowLayout());
+            panel.add(buttonPanel, BorderLayout.CENTER);
 
             JButton helperButton = new JButton("Helper");
-            panel.add(helperButton);
+            buttonPanel.add(helperButton);
 
             JButton neederButton = new JButton("Needer");
-            panel.add(neederButton);
+            buttonPanel.add(neederButton);
 
             JButton validatingUserButton = new JButton("Validating User");
-            panel.add(validatingUserButton);
+            buttonPanel.add(validatingUserButton);
 
             helperButton.addActionListener(new ActionListener() {
                 @Override
