@@ -28,7 +28,7 @@ public class HomePage {
         registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                RegisterForm registerForm = new RegisterForm();
+                registerForm registerForm = new registerForm();
                 registerForm.setVisible(true);
             }
         });
@@ -36,7 +36,7 @@ public class HomePage {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                LoginForm loginForm = new LoginForm();
+                loginForm loginForm = new loginForm();
                 loginForm.setVisible(true);
             }
         });
