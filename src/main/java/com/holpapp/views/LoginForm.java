@@ -1,4 +1,4 @@
-package com.holpapp;
+package com.holpapp.views;
 
 
 import java.awt.BorderLayout;

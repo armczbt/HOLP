@@ -1,13 +1,10 @@
-package com.holpapp;
+package com.holpapp.views;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 
-public class HelperForm extends JFrame {
-
-    public HelperForm() {
+public class NeederForm extends JFrame {
+     public NeederForm() {
         setTitle("Helper Form");
         setSize(250, 750); 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -15,6 +12,5 @@ public class HelperForm extends JFrame {
 
         JPanel panel = new JPanel();
         add(panel);
-    }
-    
+    }   
 }

@@ -1,4 +1,4 @@
-package com.holpapp;
+package com.holpapp.views;
 import javax.swing.*;
 
 import java.awt.BorderLayout;
@@ -6,10 +6,10 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class TypeUser extends JFrame {
+public class ChoiceUserPage extends JFrame {
     
 
-        public TypeUser() {
+        public ChoiceUserPage() {
             setTitle("Type of User");
             setSize(500, 500);
             setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -60,7 +60,7 @@ public class TypeUser extends JFrame {
      
     }
     public static void main(String[] args) {
-        TypeUser typeUser = new TypeUser();
+        ChoiceUserPage typeUser = new ChoiceUserPage();
         typeUser.setVisible(true);
     }
 

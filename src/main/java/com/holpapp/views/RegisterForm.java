@@ -1,14 +1,13 @@
-package com.holpapp;
+package com.holpapp.views;
 import javax.swing.*;
+
+import com.holpapp.controllers.DatabaseController;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 
 public class RegisterForm extends JFrame {
@@ -90,7 +89,8 @@ public class RegisterForm extends JFrame {
         registerButton.setFont(labelFont);
         panel.add(registerButton);
 
-        // Ajout d'un ActionListener pour le bouton "Register"
+        
+
         registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -102,12 +102,12 @@ public class RegisterForm extends JFrame {
                 String address = addressText.getText();
                 String password = new String(passwordText.getPassword());
                 String confirmPassword = new String(confirmPasswordText.getPassword());
+
+                DatabaseController databaseController = new DatabaseController();
         
                 if (password.equals(confirmPassword)) {
-                    // Les mots de passe correspondent, procédez à l'insertion dans la base de données
-                    if (insertUserIntoDatabase(name, surname, birthdate, email, phone, address, password)) {
+                    if (databaseController.insertUser(name, surname, birthdate, email, phone, address, password)) {
                         JOptionPane.showMessageDialog(null, "Successfully registered !");
-                        // Réinitialisez les champs
                         nameText.setText("");
                         surnameText.setText("");
                         birthdateText.setText("");
@@ -120,35 +120,10 @@ public class RegisterForm extends JFrame {
                         JOptionPane.showMessageDialog(null, "Error");
                     }
                 } else {
-                    // Les mots de passe ne correspondent pas, affichez un message d'erreur
                     JOptionPane.showMessageDialog(null, "Passwords are not matching", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
-    }
-
-    private boolean insertUserIntoDatabase(String name, String surname, String birthdate, String email, String phone, String address, String password) {
-        try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/projet_gei_008", "projet_gei_008", "ois3ohTh");
-
-            String query = "INSERT INTO User (name, surname, birthdate, email, phone, address, password) VALUES (?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement preparedStatement = conn.prepareStatement(query);
-            preparedStatement.setString(1, name);
-            preparedStatement.setString(2, surname);
-            preparedStatement.setString(3, birthdate);
-            preparedStatement.setString(4, email);
-            preparedStatement.setString(5, phone);
-            preparedStatement.setString(6, address);
-            preparedStatement.setString(7, password);
-
-            int rowsInserted = preparedStatement.executeUpdate();
-            conn.close();
-
-            return rowsInserted > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
     }
     
 
@@ -157,4 +132,4 @@ public class RegisterForm extends JFrame {
         registerForm.setVisible(true);
     }
 }
-//>>>>>>> fb70cb4b136e53a232ac24a8062f24e6aa1d3fdd
+
