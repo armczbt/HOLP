@@ -3,6 +3,7 @@ package com.holpapp.controllers;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DatabaseController {
@@ -25,6 +26,26 @@ public class DatabaseController {
             conn.close();
 
             return rowsInserted > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    public boolean checkUser(String email, String password) {
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/projet_gei_008", "projet_gei_008", "ois3ohTh");
+
+            String query = "SELECT * FROM User WHERE email = ? AND password = ?";
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
+            preparedStatement.setString(1, email);
+            preparedStatement.setString(2, password);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            boolean userExists = resultSet.next();
+            conn.close();
+
+            return userExists;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
