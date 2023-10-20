@@ -84,6 +84,11 @@ public class loginForm extends javax.swing.JFrame {
         passwordField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         passwordField.setText("jPasswordField1");
         passwordField.setBorder(null);
+        passwordField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                passwordFieldFocusGained(evt);
+            }
+        });
         rightPanel.add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 174, 31));
 
         emailSeparator.setForeground(new java.awt.Color(0, 0, 0));
@@ -107,6 +112,11 @@ public class loginForm extends javax.swing.JFrame {
         emailField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         emailField.setText("Email");
         emailField.setBorder(null);
+        emailField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                emailFieldFocusGained(evt);
+            }
+        });
         rightPanel.add(emailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 174, 30));
 
         loginButton.setBackground(new java.awt.Color(255, 208, 230));
@@ -165,6 +175,14 @@ public class loginForm extends javax.swing.JFrame {
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void emailFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailFieldFocusGained
+        emailField.setText("");
+    }//GEN-LAST:event_emailFieldFocusGained
+
+    private void passwordFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFieldFocusGained
+        passwordField.setText("");
+    }//GEN-LAST:event_passwordFieldFocusGained
 
     /**
      * @param args the command line arguments
