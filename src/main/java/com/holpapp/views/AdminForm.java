@@ -8,12 +8,12 @@ package com.holpapp.views;
  *
  * @author arman
  */
-public class NeederForm extends javax.swing.JFrame {
+public class HelperForm extends javax.swing.JFrame {
 
     /**
      * Creates new form NeederForm
      */
-    public NeederForm() {
+    public HelperForm() {
         initComponents();
     }
 
@@ -34,11 +34,6 @@ public class NeederForm extends javax.swing.JFrame {
         availability = new javax.swing.JTextField();
         availabilitySeparator = new javax.swing.JSeparator();
         continueButton = new javax.swing.JButton();
-        imagesPanel = new javax.swing.JPanel();
-        neederIcon = new javax.swing.JLabel();
-        diseaseLabel = new javax.swing.JLabel();
-        diseases = new javax.swing.JTextField();
-        addressSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,7 +41,7 @@ public class NeederForm extends javax.swing.JFrame {
 
         titleLabel.setFont(new java.awt.Font("Mluvka Bold", 0, 24)); // NOI18N
         titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleLabel.setText("You want to be a needer !");
+        titleLabel.setText("You are an admin");
 
         javax.swing.GroupLayout topPanelLayout = new javax.swing.GroupLayout(topPanel);
         topPanel.setLayout(topPanelLayout);
@@ -67,15 +62,15 @@ public class NeederForm extends javax.swing.JFrame {
 
         bottomPanel.setBackground(new java.awt.Color(255, 236, 245));
 
-        calendar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/holpapp/views/calendarIcon.png"))); // NOI18N
+        calendar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/holpapp/views/Nouveau projet.png"))); // NOI18N
 
         availabilityLabel.setFont(new java.awt.Font("Mluvka Medium", 0, 14)); // NOI18N
-        availabilityLabel.setText("Availability (type your needs):");
+        availabilityLabel.setText("Name of your linked building");
 
         availability.setBackground(new java.awt.Color(255, 236, 245));
         availability.setFont(new java.awt.Font("Mluvka Light", 0, 12)); // NOI18N
         availability.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        availability.setText("Availability");
+        availability.setText("Building");
         availability.setBorder(null);
         availability.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -97,102 +92,47 @@ public class NeederForm extends javax.swing.JFrame {
         bottomPanel.setLayout(bottomPanelLayout);
         bottomPanelLayout.setHorizontalGroup(
             bottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bottomPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(availabilitySeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(241, 241, 241))
             .addGroup(bottomPanelLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(bottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(continueButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(bottomPanelLayout.createSequentialGroup()
+                .addContainerGap(37, Short.MAX_VALUE)
+                .addGroup(bottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bottomPanelLayout.createSequentialGroup()
                         .addComponent(calendar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(availabilityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(availability, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(bottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(bottomPanelLayout.createSequentialGroup()
+                                .addComponent(availabilityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(36, 36, 36)
+                                .addComponent(availability, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(54, 54, 54))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bottomPanelLayout.createSequentialGroup()
+                                .addComponent(availabilitySeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(150, 150, 150))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bottomPanelLayout.createSequentialGroup()
+                        .addComponent(continueButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(334, 334, 334))))
         );
         bottomPanelLayout.setVerticalGroup(
             bottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bottomPanelLayout.createSequentialGroup()
-                .addGroup(bottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bottomPanelLayout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addGroup(bottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(availabilityLabel)
-                            .addComponent(availability, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(availabilitySeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bottomPanelLayout.createSequentialGroup()
-                        .addContainerGap(64, Short.MAX_VALUE)
-                        .addComponent(calendar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addComponent(continueButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
-        );
-
-        imagesPanel.setBackground(new java.awt.Color(255, 236, 245));
-        imagesPanel.setPreferredSize(new java.awt.Dimension(824, 170));
-
-        neederIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/holpapp/views/neederIcon.png"))); // NOI18N
-
-        diseaseLabel.setFont(new java.awt.Font("Mluvka Medium", 0, 14)); // NOI18N
-        diseaseLabel.setText("Diseases (type your diseases) :");
-
-        diseases.setBackground(new java.awt.Color(255, 236, 245));
-        diseases.setFont(new java.awt.Font("Mluvka Light", 0, 12)); // NOI18N
-        diseases.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        diseases.setText("Diseases");
-        diseases.setBorder(null);
-        diseases.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                diseasesFocusGained(evt);
-            }
-        });
-
-        addressSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-
-        javax.swing.GroupLayout imagesPanelLayout = new javax.swing.GroupLayout(imagesPanel);
-        imagesPanel.setLayout(imagesPanelLayout);
-        imagesPanelLayout.setHorizontalGroup(
-            imagesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(imagesPanelLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(neederIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(imagesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(imagesPanelLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(diseaseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(diseases, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(148, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, imagesPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(addressSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(245, 245, 245))))
-        );
-        imagesPanelLayout.setVerticalGroup(
-            imagesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, imagesPanelLayout.createSequentialGroup()
-                .addGap(0, 69, Short.MAX_VALUE)
-                .addComponent(neederIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, imagesPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(imagesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(diseaseLabel)
-                    .addComponent(diseases, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(134, 134, 134)
+                .addGroup(bottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(availabilityLabel)
+                    .addComponent(availability, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(addressSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
+                .addComponent(availabilitySeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(continueButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bottomPanelLayout.createSequentialGroup()
+                .addContainerGap(64, Short.MAX_VALUE)
+                .addComponent(calendar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(78, 78, 78))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(imagesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 961, Short.MAX_VALUE)
             .addComponent(topPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(bottomPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -200,8 +140,6 @@ public class NeederForm extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(topPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(imagesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(bottomPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
@@ -213,10 +151,6 @@ public class NeederForm extends javax.swing.JFrame {
     private void availabilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_availabilityActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_availabilityActionPerformed
-
-    private void diseasesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_diseasesFocusGained
-        diseases.setText("");
-    }//GEN-LAST:event_diseasesFocusGained
 
     private void availabilityFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_availabilityFocusGained
         availability.setText("");
@@ -252,23 +186,18 @@ public class NeederForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NeederForm().setVisible(true);
+                new HelperForm().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JSeparator addressSeparator1;
     private javax.swing.JTextField availability;
     private javax.swing.JLabel availabilityLabel;
     private javax.swing.JSeparator availabilitySeparator;
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JLabel calendar;
     private javax.swing.JButton continueButton;
-    private javax.swing.JLabel diseaseLabel;
-    private javax.swing.JTextField diseases;
-    private javax.swing.JPanel imagesPanel;
-    private javax.swing.JLabel neederIcon;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
