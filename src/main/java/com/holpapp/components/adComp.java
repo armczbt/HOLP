@@ -4,17 +4,47 @@
  */
 package com.holpapp.components;
 
+import javax.swing.SwingUtilities;
+
+import com.holpapp.models.Ad;
+import com.holpapp.models.User;
+import com.holpapp.views.AdInfos;
+
 /**
  *
  * @author arman
  */
-public class ad extends javax.swing.JPanel {
+public class adComp extends javax.swing.JPanel {
+
+    private Ad ad;
+    private User userSaved;
 
     /**
      * Creates new form ad
      */
-    public ad() {
+    public adComp(Ad ad, User user) {
+        this.ad = ad;
+        this.userSaved = user;
         initComponents();
+        adName.setText(ad.getTitle());
+        adDesc.setText(ad.getDescription());
+        adTime.setText(ad.getAdWhen());
+
+        String priority = ad.getPriority();
+        if ("Low".equals(priority)) {
+            exclam.setForeground(new java.awt.Color(0, 128, 0)); // Vert
+        } else if ("Medium".equals(priority)) {
+            exclam.setText("!!");
+            exclam.setForeground(new java.awt.Color(255, 165, 0)); // Orange
+        } else if ("High".equals(priority)) {
+            exclam.setText("!!!");
+            exclam.setForeground(new java.awt.Color(255, 0, 0)); // Rouge
+        }
+        if(ad.isDone()){
+            exclam.setText(" ");
+            exclam.setForeground(new java.awt.Color(0, 128, 0)); // Vert
+            setBackground(new java.awt.Color(210, 255, 228));
+        }
     }
 
     /**
@@ -28,12 +58,18 @@ public class ad extends javax.swing.JPanel {
         adName = new javax.swing.JLabel();
         adDesc = new javax.swing.JLabel();
         adTime = new javax.swing.JLabel();
+        exclam = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 252, 254));
         setBorder(new javax.swing.border.LineBorder(new java.awt.Color(43, 43, 43), 3, true));
         setMaximumSize(new java.awt.Dimension(660, 120));
         setMinimumSize(new java.awt.Dimension(660, 120));
         setPreferredSize(new java.awt.Dimension(660, 120));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         adName.setFont(new java.awt.Font("Mluvka Bold", 0, 18)); // NOI18N
         adName.setText("Title");
@@ -44,17 +80,22 @@ public class ad extends javax.swing.JPanel {
         adTime.setFont(new java.awt.Font("Mluvka Light", 0, 12)); // NOI18N
         adTime.setText("When");
 
+        exclam.setFont(new java.awt.Font("Mluvka ExtraBold", 0, 48)); // NOI18N
+        exclam.setText("!");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(adTime, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(adDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(adName, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17))
+                    .addComponent(adTime, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(adDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(adName, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(exclam)
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -66,13 +107,24 @@ public class ad extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(adTime, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(exclam)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        AdInfos adInfos = new AdInfos(ad,userSaved);
+        adInfos.setVisible(true);
+        SwingUtilities.getWindowAncestor(this).dispose();
+    }//GEN-LAST:event_formMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel adDesc;
     private javax.swing.JLabel adName;
     private javax.swing.JLabel adTime;
+    private javax.swing.JLabel exclam;
     // End of variables declaration//GEN-END:variables
 }

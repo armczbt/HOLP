@@ -22,6 +22,9 @@
       <Dimension value="[660, 120]"/>
     </Property>
   </Properties>
+  <Events>
+    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="formMouseClicked"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -38,13 +41,15 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="17" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="adTime" min="-2" pref="620" max="-2" attributes="0"/>
-                  <Component id="adDesc" min="-2" pref="620" max="-2" attributes="0"/>
-                  <Component id="adName" min="-2" pref="620" max="-2" attributes="0"/>
+                  <Component id="adTime" alignment="1" min="-2" pref="577" max="-2" attributes="0"/>
+                  <Component id="adDesc" min="-2" pref="577" max="-2" attributes="0"/>
+                  <Component id="adName" min="-2" pref="577" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+              <EmptySpace pref="34" max="32767" attributes="0"/>
+              <Component id="exclam" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -58,6 +63,11 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="adTime" min="-2" pref="30" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <Component id="exclam" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -85,6 +95,14 @@
           <Font name="Mluvka Light" size="12" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="When"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="exclam">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Mluvka ExtraBold" size="48" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="!"/>
       </Properties>
     </Component>
   </SubComponents>

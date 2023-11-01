@@ -5,9 +5,20 @@
 package com.holpapp.views.Needer;
 
 
+import java.awt.Dimension;
+import java.util.List;
+
+import javax.swing.Box;
+import javax.swing.JLabel;
+
+import com.holpapp.components.adComp;
+import com.holpapp.controllers.DatabaseController;
+import com.holpapp.models.Ad;
 import com.holpapp.models.User;
 import com.holpapp.views.AddAd;
 import com.holpapp.views.UserInfos;
+
+import net.miginfocom.swing.MigLayout;
 
 /**
  *
@@ -16,6 +27,7 @@ import com.holpapp.views.UserInfos;
 public class NeederHome extends javax.swing.JFrame {
 
     private User userSaved;
+    private List<Ad> ads;
 
 
     /**
@@ -23,7 +35,21 @@ public class NeederHome extends javax.swing.JFrame {
      */
     public NeederHome(User user) {
         this.userSaved = user;
+        DatabaseController databaseController = new DatabaseController();
+        this.ads = databaseController.getHelperAds();
         initComponents();
+
+        adList.setLayout(new MigLayout("fillx, wrap 1", "center", ""));
+
+        for (Ad ad : ads) {
+            if (ad.getValidation().equals("1")&&(ad.getBeneficiary()==0)) {
+                adComp adComp = new adComp(ad,userSaved);
+                adList.add(Box.createRigidArea(new Dimension(0, 15))); 
+                adList.add(adComp, "growx");
+            }
+        }
+
+        bottomPanel.getVerticalScrollBar().setUnitIncrement(50);
        
     }
 
@@ -51,7 +77,7 @@ public class NeederHome extends javax.swing.JFrame {
 
         titleLabel.setFont(new java.awt.Font("Mluvka Bold", 0, 24)); // NOI18N
         titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleLabel.setText("Hello " + userSaved.getName() + " " + userSaved.getSurname() + " !");
+        titleLabel.setText("Hello "+userSaved.getName()+" !");
 
         infoButton.setBackground(new java.awt.Color(255, 236, 245));
         infoButton.setFont(new java.awt.Font("Mluvka Medium", 0, 12)); // NOI18N
@@ -102,7 +128,7 @@ public class NeederHome extends javax.swing.JFrame {
         midPanelLayout.setHorizontalGroup(
             midPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(midPanelLayout.createSequentialGroup()
-                .addGap(270, 270, 270)
+                .addGap(279, 279, 279)
                 .addComponent(herearelabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(addAdButton)
@@ -160,7 +186,6 @@ public class NeederHome extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(bottomPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE))
         );
-
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

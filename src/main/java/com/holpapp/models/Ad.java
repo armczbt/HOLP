@@ -3,6 +3,7 @@ package com.holpapp.models;
 import java.time.LocalDateTime;
 
 public class Ad {
+    private Integer id;
     private String type;
     private String title;
     private String description;
@@ -10,10 +11,13 @@ public class Ad {
     private String ad_where;
     private Integer idCreator;
     private LocalDateTime creationDate;
-    private boolean validated;
+    private String validated;
     private Integer beneficiary;
+    private String priority;
+    private Boolean done;
 
-    public Ad(String type, String title, String description, String ad_when, String ad_where, Integer idCreator, LocalDateTime creationDate, boolean validated, Integer beneficiary) {
+    public Ad(Integer id,String type, String title, String description, String ad_when, String ad_where, Integer idCreator, LocalDateTime creationDate, String validated, Integer beneficiary, String priority, Boolean done) {
+        this.id = id;
         this.type = type;
         this.title = title;
         this.description = description;
@@ -23,8 +27,17 @@ public class Ad {
         this.creationDate = creationDate;
         this.validated = validated;
         this.beneficiary = beneficiary;
+        this.priority = priority;
+        this.done = done;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
    
 
@@ -84,11 +97,11 @@ public class Ad {
         this.creationDate = creationDate;
     }
 
-    public boolean isValidated() {
+    public String getValidation() {
         return validated;
     }
 
-    public void setValidated(boolean validated) {
+    public void setValidation(String validated) {
         this.validated = validated;
     }
 
@@ -98,5 +111,21 @@ public class Ad {
 
     public void setBeneficiary(Integer beneficiary) {
         this.beneficiary = beneficiary;
+    }
+
+    public String getPriority() {
+        return priority;
+    }
+
+    public void setPriority(String priority) {
+        this.priority = priority;
+    }
+
+    public Boolean isDone() {
+        return done;
+    }
+
+    public void setDone(Boolean done) {
+        this.done = done;
     }
 }

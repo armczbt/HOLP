@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import com.holpapp.models.Ad;
 import com.holpapp.models.Admin;
@@ -269,8 +270,8 @@ public boolean addAd(Ad ad) {
     try {
         Connection conn = DriverManager.getConnection("jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/projet_gei_008", "projet_gei_008", "ois3ohTh");
 
-        String insertQuery = "INSERT INTO ad (type, title, description, ad_when, ad_where, idCreator, creation_date, validated, beneficiary) " +
-            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String insertQuery = "INSERT INTO ad (type, title, description, ad_when, ad_where, idCreator, creation_date, validated, beneficiary, priority, done) " +
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         PreparedStatement preparedStatement = conn.prepareStatement(insertQuery);
         preparedStatement.setString(1, ad.getType());
@@ -280,7 +281,9 @@ public boolean addAd(Ad ad) {
         preparedStatement.setString(5, ad.getAdWhere());
         preparedStatement.setInt(6, ad.getIdCreator());
         preparedStatement.setTimestamp(7, Timestamp.valueOf(ad.getCreationDate()));
-        preparedStatement.setBoolean(8, ad.isValidated());
+        preparedStatement.setString(8, ad.getValidation());
+        preparedStatement.setString(10, ad.getPriority());
+        preparedStatement.setBoolean(11, ad.isDone());
 
         if (ad.getBeneficiary() == null) {
             preparedStatement.setNull(9, java.sql.Types.INTEGER);
@@ -297,6 +300,372 @@ public boolean addAd(Ad ad) {
         return false;
     }
 }
+
+public List<Ad> getHelperAds() {
+        List<Ad> ads = new ArrayList<>();
+
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/projet_gei_008", "projet_gei_008", "ois3ohTh");
+
+            String query = "SELECT * FROM ad WHERE type = 'Helper'";
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String type = resultSet.getString("type");
+                String title = resultSet.getString("title");
+                String description = resultSet.getString("description");
+                String adWhen = resultSet.getString("ad_when");
+                String adWhere = resultSet.getString("ad_where");
+                int idCreator = resultSet.getInt("idCreator");
+                LocalDateTime creationDate = resultSet.getTimestamp("creation_date").toLocalDateTime();
+                String validated = resultSet.getString("validated");
+                Integer beneficiary = resultSet.getInt("beneficiary");
+                String priority = resultSet.getString("priority");
+                Boolean done = resultSet.getBoolean("done");
+
+                Ad ad = new Ad(id,type, title, description, adWhen, adWhere, idCreator, creationDate, validated, beneficiary, priority, done);
+                ads.add(ad);
+            }
+
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ads;
+    }
+
+    public List<Ad> getNeederAds() {
+        List<Ad> ads = new ArrayList<>();
+
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/projet_gei_008", "projet_gei_008", "ois3ohTh");
+
+            String query = "SELECT * FROM ad WHERE type = 'Needer'";
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String type = resultSet.getString("type");
+                String title = resultSet.getString("title");
+                String description = resultSet.getString("description");
+                String adWhen = resultSet.getString("ad_when");
+                String adWhere = resultSet.getString("ad_where");
+                int idCreator = resultSet.getInt("idCreator");
+                LocalDateTime creationDate = resultSet.getTimestamp("creation_date").toLocalDateTime();
+                String validated = resultSet.getString("validated");
+                Integer beneficiary = resultSet.getInt("beneficiary");
+                String priority = resultSet.getString("priority");
+                Boolean done = resultSet.getBoolean("done");
+
+                Ad ad = new Ad(id,type, title, description, adWhen, adWhere, idCreator, creationDate, validated, beneficiary, priority,done);
+                ads.add(ad);
+            }
+
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ads;
+    }
+
+    public List<Ad> getAllAds() {
+        List<Ad> ads = new ArrayList<>();
+
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/projet_gei_008", "projet_gei_008", "ois3ohTh");
+
+            String query = "SELECT * FROM ad";
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String type = resultSet.getString("type");
+                String title = resultSet.getString("title");
+                String description = resultSet.getString("description");
+                String adWhen = resultSet.getString("ad_when");
+                String adWhere = resultSet.getString("ad_where");
+                int idCreator = resultSet.getInt("idCreator");
+                LocalDateTime creationDate = resultSet.getTimestamp("creation_date").toLocalDateTime();
+                String validated = resultSet.getString("validated");
+                Integer beneficiary = resultSet.getInt("beneficiary");
+                String priority = resultSet.getString("priority");
+                Boolean done = resultSet.getBoolean("done");
+
+                Ad ad = new Ad(id,type, title, description, adWhen, adWhere, idCreator, creationDate, validated, beneficiary, priority,done);
+                ads.add(ad);
+            }
+
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ads;
+    }
+
+    public Needer getNeederFromUser(User user) {
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/projet_gei_008", "projet_gei_008", "ois3ohTh");
+    
+            String getNeederQuery = "SELECT * FROM needer WHERE Id = ?";
+            PreparedStatement getNeederStatement = conn.prepareStatement(getNeederQuery);
+            getNeederStatement.setInt(1, user.getId());
+            ResultSet neederResult = getNeederStatement.executeQuery();
+    
+            if (neederResult.next()) {
+                String diseases = neederResult.getString("diseases");
+                String availability = neederResult.getString("availability");
+    
+                Needer needer = new Needer(user, diseases, availability);
+                conn.close();
+                return needer;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Helper getHelperFromUser(User user) {
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/projet_gei_008", "projet_gei_008", "ois3ohTh");
+    
+            String getHelperQuery = "SELECT * FROM helper WHERE Id = ?";
+            PreparedStatement getHelperStatement = conn.prepareStatement(getHelperQuery);
+            getHelperStatement.setInt(1, user.getId());
+            ResultSet helperResult = getHelperStatement.executeQuery();
+    
+            if (helperResult.next()) {
+                String skills = helperResult.getString("skills");
+                String availability = helperResult.getString("availability");
+    
+                Helper helper = new Helper(user, skills, availability);
+                conn.close();
+                return helper;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Admin getAdminFromUser(User user) {
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/projet_gei_008", "projet_gei_008", "ois3ohTh");
+    
+            String getAdminQuery = "SELECT * FROM admin WHERE Id = ?";
+            PreparedStatement getAdminStatement = conn.prepareStatement(getAdminQuery);
+            getAdminStatement.setInt(1, user.getId());
+            ResultSet adminResult = getAdminStatement.executeQuery();
+    
+            if (adminResult.next()) {
+                String building = adminResult.getString("building");
+    
+                Admin admin = new Admin(user, building);
+                conn.close();
+                return admin;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public User getUserFromAd(Ad ad) {
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/projet_gei_008", "projet_gei_008", "ois3ohTh");
+    
+            String getUserQuery = "SELECT * FROM user WHERE id = ?";
+            PreparedStatement getUserStatement = conn.prepareStatement(getUserQuery);
+            getUserStatement.setInt(1, ad.getIdCreator());
+            ResultSet userResult = getUserStatement.executeQuery();
+    
+            if (userResult.next()) {
+                int id = userResult.getInt("id");
+                String name = userResult.getString("name");
+                String surname = userResult.getString("surname");
+                LocalDate birthdate = LocalDate.parse(userResult.getString("birthdate"));
+                String email = userResult.getString("email");
+                String phone = userResult.getString("phone");
+                String address = userResult.getString("address");
+                String password = userResult.getString("password");
+                String role = userResult.getString("role");
+    
+                User user = new User(id, name, surname, birthdate, email, phone, address, password, role);
+                conn.close();
+                return user;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public boolean validateAd(Ad ad) {
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/projet_gei_008", "projet_gei_008", "ois3ohTh");
+    
+            String validateQuery = "UPDATE ad SET validated = ? WHERE id = ?";
+            PreparedStatement validateStatement = conn.prepareStatement(validateQuery);
+            validateStatement.setBoolean(1, true); 
+            validateStatement.setInt(2, ad.getId());
+    
+            int rowsUpdated = validateStatement.executeUpdate();
+            conn.close();
+    
+            return rowsUpdated > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean invalidateAd(Ad ad) {
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/projet_gei_008", "projet_gei_008", "ois3ohTh");
+    
+            String invalidateQuery = "UPDATE ad SET validated = ? WHERE id = ?";
+            PreparedStatement invalidateStatement = conn.prepareStatement(invalidateQuery);
+            invalidateStatement.setBoolean(1, false);  
+            invalidateStatement.setInt(2, ad.getId());  
+    
+            int rowsUpdated = invalidateStatement.executeUpdate();
+            conn.close();
+    
+            return rowsUpdated > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
+    public boolean linkAdBenef(Ad ad, User beneficiary) {
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/projet_gei_008", "projet_gei_008", "ois3ohTh");
+    
+            String linkAdBenefQuery = "UPDATE ad SET beneficiary = ? WHERE id = ?";
+            PreparedStatement linkAdBenefStatement = conn.prepareStatement(linkAdBenefQuery);
+            
+            if (beneficiary != null) {
+                linkAdBenefStatement.setInt(1, beneficiary.getId());
+            } else {
+                linkAdBenefStatement.setNull(1, java.sql.Types.INTEGER);
+            }
+            
+            linkAdBenefStatement.setInt(2, ad.getId());
+    
+            int rowsUpdated = linkAdBenefStatement.executeUpdate();
+            conn.close();
+    
+            return rowsUpdated > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public List<Ad> getBenefAds(User user) {
+        List<Ad> ads = new ArrayList<>();
+
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/projet_gei_008", "projet_gei_008", "ois3ohTh");
+
+            String validateQuery = "SELECT * from ad WHERE beneficiary = ?";
+            PreparedStatement validateStatement = conn.prepareStatement(validateQuery);
+            validateStatement.setInt(1, user.getId());
+
+            ResultSet resultSet = validateStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String type = resultSet.getString("type");
+                String title = resultSet.getString("title");
+                String description = resultSet.getString("description");
+                String adWhen = resultSet.getString("ad_when");
+                String adWhere = resultSet.getString("ad_where");
+                int idCreator = resultSet.getInt("idCreator");
+                LocalDateTime creationDate = resultSet.getTimestamp("creation_date").toLocalDateTime();
+                String validated = resultSet.getString("validated");
+                Integer beneficiary = resultSet.getInt("beneficiary");
+                String priority = resultSet.getString("priority");
+                Boolean done = resultSet.getBoolean("done");
+
+                Ad ad = new Ad(id,type, title, description, adWhen, adWhere, idCreator, creationDate, validated, beneficiary, priority, done);
+                ads.add(ad);
+            }
+
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ads;
+    }
+
+    public List<Ad> getCreatedAds(User user) {
+        List<Ad> ads = new ArrayList<>();
+
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/projet_gei_008", "projet_gei_008", "ois3ohTh");
+
+            String validateQuery = "SELECT * from ad WHERE idCreator = ?";
+            PreparedStatement validateStatement = conn.prepareStatement(validateQuery);
+            validateStatement.setInt(1, user.getId());
+
+            ResultSet resultSet = validateStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String type = resultSet.getString("type");
+                String title = resultSet.getString("title");
+                String description = resultSet.getString("description");
+                String adWhen = resultSet.getString("ad_when");
+                String adWhere = resultSet.getString("ad_where");
+                int idCreator = resultSet.getInt("idCreator");
+                LocalDateTime creationDate = resultSet.getTimestamp("creation_date").toLocalDateTime();
+                String validated = resultSet.getString("validated");
+                Integer beneficiary = resultSet.getInt("beneficiary");
+                String priority = resultSet.getString("priority");
+                Boolean done = resultSet.getBoolean("done");
+
+                Ad ad = new Ad(id,type, title, description, adWhen, adWhere, idCreator, creationDate, validated, beneficiary, priority, done);
+                ads.add(ad);
+            }
+
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ads;
+    }
+
+    public boolean setDone(Ad ad) {
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/projet_gei_008", "projet_gei_008", "ois3ohTh");
+    
+            String linkAdBenefQuery = "UPDATE ad SET done = true WHERE id = ?";
+            PreparedStatement linkAdBenefStatement = conn.prepareStatement(linkAdBenefQuery);
+            
+            
+            
+            linkAdBenefStatement.setInt(1, ad.getId());
+    
+            int rowsUpdated = linkAdBenefStatement.executeUpdate();
+            conn.close();
+    
+            return rowsUpdated > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
 
 
 

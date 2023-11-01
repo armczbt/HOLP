@@ -4,8 +4,18 @@
  */
 package com.holpapp.views.Admin;
 
+import java.awt.Dimension;
+import java.util.List;
+
+import javax.swing.Box;
+
+import com.holpapp.components.adComp;
+import com.holpapp.controllers.DatabaseController;
+import com.holpapp.models.Ad;
 import com.holpapp.models.User;
 import com.holpapp.views.UserInfos;
+
+import net.miginfocom.swing.MigLayout;
 
 /**
  *
@@ -14,6 +24,7 @@ import com.holpapp.views.UserInfos;
 public class AdminHome extends javax.swing.JFrame {
 
     private User userSaved;
+    private List<Ad> ads;
 
 
     /**
@@ -21,7 +32,21 @@ public class AdminHome extends javax.swing.JFrame {
      */
     public AdminHome(User user) {
         this.userSaved = user;
+        DatabaseController databaseController = new DatabaseController();
+        this.ads = databaseController.getAllAds();
         initComponents();
+
+        adList.setLayout(new MigLayout("fillx, wrap 1", "center", ""));
+
+        for (Ad ad : ads) {
+            if (ad.getValidation().equals("notChecked")) {
+                adComp adComp = new adComp(ad,userSaved);
+                adList.add(Box.createRigidArea(new Dimension(0, 15))); 
+                adList.add(adComp, "growx");
+            }
+        }
+
+        bottomPanel.getVerticalScrollBar().setUnitIncrement(50);
        
     }
 
@@ -48,7 +73,7 @@ public class AdminHome extends javax.swing.JFrame {
 
         titleLabel.setFont(new java.awt.Font("Mluvka Bold", 0, 24)); // NOI18N
         titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleLabel.setText("Hello user !");
+        titleLabel.setText("Hello "+userSaved.getName()+" !");
 
         infoButton.setBackground(new java.awt.Color(255, 236, 245));
         infoButton.setFont(new java.awt.Font("Mluvka Medium", 0, 12)); // NOI18N

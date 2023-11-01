@@ -2,13 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.holpapp.views.Helper;
+package com.holpapp.views.Needer;
 
 
 import java.awt.Dimension;
 import java.util.List;
 
 import javax.swing.Box;
+import javax.swing.JLabel;
 
 import com.holpapp.components.adComp;
 import com.holpapp.controllers.DatabaseController;
@@ -23,25 +24,25 @@ import net.miginfocom.swing.MigLayout;
  *
  * @author arman
  */
-public class HelperHome extends javax.swing.JFrame {
+public class NeederHome extends javax.swing.JFrame {
 
     private User userSaved;
-
     private List<Ad> ads;
+
+
     /**
      * Creates new form NeederForm
      */
-    public HelperHome(User user) {
+    public NeederHome(User user) {
         this.userSaved = user;
         DatabaseController databaseController = new DatabaseController();
-        this.ads = databaseController.getNeederAds();
+        this.ads = databaseController.getHelperAds();
         initComponents();
 
         adList.setLayout(new MigLayout("fillx, wrap 1", "center", ""));
-        
+
         for (Ad ad : ads) {
-            
-            if (ad.getValidation().equals("1")&&(ad.getBeneficiary()==0)) { 
+            if (ad.getValidation().equals("1")&&(ad.getBeneficiary()==0)) {
                 adComp adComp = new adComp(ad,userSaved);
                 adList.add(Box.createRigidArea(new Dimension(0, 15))); 
                 adList.add(adComp, "growx");
@@ -66,6 +67,7 @@ public class HelperHome extends javax.swing.JFrame {
         midPanel = new javax.swing.JPanel();
         herearelabel = new javax.swing.JLabel();
         addAdButton = new javax.swing.JButton();
+        refButton = new javax.swing.JButton();
         bottomPanel = new javax.swing.JScrollPane();
         adList = new javax.swing.JPanel();
         adListSep = new javax.swing.JSeparator();
@@ -76,7 +78,7 @@ public class HelperHome extends javax.swing.JFrame {
 
         titleLabel.setFont(new java.awt.Font("Mluvka Bold", 0, 24)); // NOI18N
         titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleLabel.setText("Hello " + userSaved.getName()+" !");
+        titleLabel.setText("Hello "+userSaved.getName()+" !");
 
         infoButton.setBackground(new java.awt.Color(255, 236, 245));
         infoButton.setFont(new java.awt.Font("Mluvka Medium", 0, 12)); // NOI18N
@@ -111,7 +113,7 @@ public class HelperHome extends javax.swing.JFrame {
         midPanel.setBackground(new java.awt.Color(255, 236, 245));
 
         herearelabel.setFont(new java.awt.Font("Mluvka SemiBold", 0, 14)); // NOI18N
-        herearelabel.setText("Here are the latest needer ads:");
+        herearelabel.setText("Here are the latest helper ads:");
 
         addAdButton.setBackground(new java.awt.Color(255, 208, 230));
         addAdButton.setFont(new java.awt.Font("Mluvka Medium", 0, 12)); // NOI18N
@@ -122,12 +124,23 @@ public class HelperHome extends javax.swing.JFrame {
             }
         });
 
+        refButton.setBackground(new java.awt.Color(255, 208, 230));
+        refButton.setFont(new java.awt.Font("Mluvka Medium", 0, 12)); // NOI18N
+        refButton.setText("Refresh the list");
+        refButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout midPanelLayout = new javax.swing.GroupLayout(midPanel);
         midPanel.setLayout(midPanelLayout);
         midPanelLayout.setHorizontalGroup(
             midPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(midPanelLayout.createSequentialGroup()
-                .addGap(270, 270, 270)
+                .addGap(42, 42, 42)
+                .addComponent(refButton)
+                .addGap(121, 121, 121)
                 .addComponent(herearelabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(addAdButton)
@@ -139,7 +152,8 @@ public class HelperHome extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(midPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(herearelabel)
-                    .addComponent(addAdButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(addAdButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(refButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
@@ -186,8 +200,8 @@ public class HelperHome extends javax.swing.JFrame {
                 .addComponent(bottomPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE))
         );
 
-       
-        
+        bottomPanel.getVerticalScrollBar().setUnitIncrement(50);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -202,6 +216,22 @@ public class HelperHome extends javax.swing.JFrame {
         addAd.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_addAdButtonActionPerformed
+
+    private void refButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refButtonActionPerformed
+        adList.removeAll();
+        DatabaseController databaseController = new DatabaseController();
+        this.ads = databaseController.getHelperAds();
+        // Ajoutez les nouvelles annonces
+        for (Ad ad : ads) {
+            if (ad.getValidation().equals("1") && (ad.getBeneficiary() == 0)) {
+                adComp adComp = new adComp(ad, userSaved);
+                adList.add(Box.createRigidArea(new Dimension(0, 15)));
+                adList.add(adComp, "growx");
+            }
+        }
+        validate();
+        repaint();
+    }//GEN-LAST:event_refButtonActionPerformed
 
     
                                                   
@@ -223,14 +253,18 @@ public class HelperHome extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HelperHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NeederHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HelperHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NeederHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HelperHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NeederHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HelperHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NeederHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -239,7 +273,7 @@ public class HelperHome extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HelperHome(null).setVisible(true);
+                new NeederHome(null).setVisible(true);
             }
         });
     }
@@ -252,6 +286,7 @@ public class HelperHome extends javax.swing.JFrame {
     private javax.swing.JLabel herearelabel;
     private javax.swing.JButton infoButton;
     private javax.swing.JPanel midPanel;
+    private javax.swing.JButton refButton;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
