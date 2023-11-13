@@ -43,6 +43,25 @@ public class DatabaseController {
             return false;
         }
     }
+
+    public void connect() {
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/projet_gei_008", "projet_gei_008", "ois3ohTh");
+    
+            if (conn != null) {
+                System.out.println("Connexion à la base de données établie.");
+            } else {
+                System.err.println("Échec de la connexion à la base de données.");
+            }
+
+            conn.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+            
+    
     
     
     public User checkUser(String email, String password) {
@@ -154,6 +173,72 @@ public boolean addNeeder(Needer needer) {
     } catch (SQLException e) {
         e.printStackTrace();
         return false;
+    }
+}
+
+public User getUserById(int userId) throws SQLException {
+    Connection conn = null;
+    PreparedStatement stmt = null;
+    ResultSet rs = null;
+    User user = null;
+
+    try {
+        conn = DriverManager.getConnection("jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/projet_gei_008", "projet_gei_008", "ois3ohTh");
+        String query = "SELECT * FROM user WHERE id = ?";
+        stmt = conn.prepareStatement(query);
+        stmt.setInt(1, userId);
+        rs = stmt.executeQuery();
+
+        if (rs.next()) {
+            // Construisez l'objet User à partir des résultats de la requête
+            user = new User(
+                rs.getInt("id"),
+                rs.getString("name"),
+                rs.getString("surname"),
+                rs.getDate("birthdate").toLocalDate(),
+                rs.getString("email"),
+                rs.getString("phone"),
+                rs.getString("address"),
+                rs.getString("password"),
+                rs.getString("role")
+            );
+        }
+    } finally {
+        closeResources(conn, stmt, rs);
+    }
+
+    return user;
+}
+
+
+public void deleteUser(int userId) throws SQLException {
+    Connection conn = null;
+    PreparedStatement stmt = null;
+
+    try {
+        conn = DriverManager.getConnection("jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/projet_gei_008", "projet_gei_008", "ois3ohTh");
+        String query = "DELETE FROM user WHERE id = ?";
+        stmt = conn.prepareStatement(query);
+        stmt.setInt(1, userId);
+        stmt.executeUpdate();
+    } finally {
+        closeResources(conn, stmt, null);
+    }
+}
+
+private void closeResources(Connection conn, PreparedStatement stmt, ResultSet rs) {
+    try {
+        if (rs != null) {
+            rs.close();
+        }
+        if (stmt != null) {
+            stmt.close();
+        }
+        if (conn != null) {
+            conn.close();
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
 }
 
