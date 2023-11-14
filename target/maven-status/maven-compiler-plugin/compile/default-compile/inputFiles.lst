@@ -1,12 +1,16 @@
-C:\Users\lchev\Desktop\INSA\4A\CP_PDLA\project_holp\HOLP\src\main\java\com\holpapp\models\NeederModel.java
-C:\Users\lchev\Desktop\INSA\4A\CP_PDLA\project_holp\HOLP\src\main\java\com\holpapp\models\ValidatingUserModel.java
-C:\Users\lchev\Desktop\INSA\4A\CP_PDLA\project_holp\HOLP\src\main\java\com\holpapp\views\registerForm.java
-C:\Users\lchev\Desktop\INSA\4A\CP_PDLA\project_holp\HOLP\src\main\java\com\holpapp\models\HelperModel.java
-C:\Users\lchev\Desktop\INSA\4A\CP_PDLA\project_holp\HOLP\src\main\java\com\holpapp\views\NeederForm.java
-C:\Users\lchev\Desktop\INSA\4A\CP_PDLA\project_holp\HOLP\src\main\java\com\holpapp\views\ValidatingUserForm.java
-C:\Users\lchev\Desktop\INSA\4A\CP_PDLA\project_holp\HOLP\src\main\java\com\holpapp\models\UserModel.java
-C:\Users\lchev\Desktop\INSA\4A\CP_PDLA\project_holp\HOLP\src\main\java\com\holpapp\views\HelperForm.java
-C:\Users\lchev\Desktop\INSA\4A\CP_PDLA\project_holp\HOLP\src\main\java\com\holpapp\views\HomePage.java
-C:\Users\lchev\Desktop\INSA\4A\CP_PDLA\project_holp\HOLP\src\main\java\com\holpapp\views\loginForm.java
-C:\Users\lchev\Desktop\INSA\4A\CP_PDLA\project_holp\HOLP\src\main\java\com\holpapp\controllers\DatabaseController.java
-C:\Users\lchev\Desktop\INSA\4A\CP_PDLA\project_holp\HOLP\src\main\java\com\holpapp\views\ChoiceUserPage.java
+C:\Users\arman\Desktop\INSA 23-24\HOLP\src\main\java\com\holpapp\views\loginForm.java
+C:\Users\arman\Desktop\INSA 23-24\HOLP\src\main\java\com\holpapp\views\UserInfos.java
+C:\Users\arman\Desktop\INSA 23-24\HOLP\src\main\java\com\holpapp\controllers\DatabaseController.java
+C:\Users\arman\Desktop\INSA 23-24\HOLP\src\main\java\com\holpapp\models\Helper.java
+C:\Users\arman\Desktop\INSA 23-24\HOLP\src\main\java\com\holpapp\views\HelperHome.java
+C:\Users\arman\Desktop\INSA 23-24\HOLP\src\main\java\com\holpapp\views\HomePage.java
+C:\Users\arman\Desktop\INSA 23-24\HOLP\src\main\java\com\holpapp\components\ad.java
+C:\Users\arman\Desktop\INSA 23-24\HOLP\src\main\java\com\holpapp\models\Admin.java
+C:\Users\arman\Desktop\INSA 23-24\HOLP\src\main\java\com\holpapp\models\User.java
+C:\Users\arman\Desktop\INSA 23-24\HOLP\src\main\java\com\holpapp\views\AddAd.java
+C:\Users\arman\Desktop\INSA 23-24\HOLP\src\main\java\com\holpapp\views\ChooseUserType.java
+C:\Users\arman\Desktop\INSA 23-24\HOLP\src\main\java\com\holpapp\views\NeederForm.java
+C:\Users\arman\Desktop\INSA 23-24\HOLP\src\main\java\com\holpapp\views\registerForm.java
+C:\Users\arman\Desktop\INSA 23-24\HOLP\src\main\java\com\holpapp\models\Needer.java
+C:\Users\arman\Desktop\INSA 23-24\HOLP\src\main\java\com\holpapp\views\AdminForm.java
+C:\Users\arman\Desktop\INSA 23-24\HOLP\src\main\java\com\holpapp\views\HelperForm.java
