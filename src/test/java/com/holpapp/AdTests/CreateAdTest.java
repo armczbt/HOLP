@@ -2,6 +2,7 @@ package com.holpapp.AdTests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -33,8 +34,9 @@ public class CreateAdTest {
             "role"
         );
 
-        Ad ad = new Ad(1, "Offer", "Job Title", "Job Description", "2023-01-01", "Location", user.getId(), LocalDateTime.now(), "Pending", null, "High", false);
+        Ad ad = new Ad(1, "Offer", "Job Title", "Job Description", "2023-01-01", "Location", Database.checkUser(user.getEmail(), user.getPassword()).getId(), LocalDateTime.now(), "Pending", null, "High", false);
 
+        try{
         Database.addAd(ad);
 
         Ad retrievedAd = null;
@@ -49,6 +51,12 @@ public class CreateAdTest {
         assertNotNull(retrievedAd);
         assertEquals(ad.getTitle(), retrievedAd.getTitle());
         assertEquals(ad.getDescription(), retrievedAd.getDescription());
+
+        Database.deleteAd(retrievedAd.getTitle(), retrievedAd.getDescription());
+
+        } catch (Exception e) {
+            fail("Exception not expected: " + e.getMessage());
+        }
 
     }
 }

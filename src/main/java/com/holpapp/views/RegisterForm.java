@@ -82,7 +82,7 @@ public class registerForm extends javax.swing.JFrame {
 
         leftPanel.setBackground(new java.awt.Color(255, 208, 230));
 
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/holpapp/views/logoholp.png"))); // NOI18N
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logoholp.png"))); // NOI18N
 
         moto.setFont(new java.awt.Font("Mluvka Bold", 0, 14)); // NOI18N
         moto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

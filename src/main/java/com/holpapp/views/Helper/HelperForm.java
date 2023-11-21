@@ -80,7 +80,7 @@ public class HelperForm extends javax.swing.JFrame {
 
         bottomPanel.setBackground(new java.awt.Color(255, 236, 245));
 
-        calendar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/holpapp/views/calendarIcon.png"))); // NOI18N
+        calendar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/calendarIcon.png"))); // NOI18N
 
         availabilityLabel.setFont(new java.awt.Font("Mluvka Medium", 0, 14)); // NOI18N
         availabilityLabel.setText("Availabilities:");
@@ -157,7 +157,7 @@ public class HelperForm extends javax.swing.JFrame {
         imagesPanel.setBackground(new java.awt.Color(255, 236, 245));
         imagesPanel.setPreferredSize(new java.awt.Dimension(824, 170));
 
-        helperIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/holpapp/views/helperIcon.png"))); // NOI18N
+        helperIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/helperIcon.png"))); // NOI18N
 
         helperLabel.setFont(new java.awt.Font("Mluvka Medium", 0, 14)); // NOI18N
         helperLabel.setText("Skills (describe your skills)");

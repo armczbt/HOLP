@@ -226,6 +226,67 @@ public void deleteUser(int userId) throws SQLException {
     }
 }
 
+public void deleteNeeder(int userId) throws SQLException {
+    Connection conn = null;
+    PreparedStatement stmt = null;
+
+    try {
+        conn = DriverManager.getConnection("jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/projet_gei_008", "projet_gei_008", "ois3ohTh");
+        String query = "DELETE FROM needer WHERE id = ?";
+        stmt = conn.prepareStatement(query);
+        stmt.setInt(1, userId);
+        stmt.executeUpdate();
+    } finally {
+        closeResources(conn, stmt, null);
+    }
+}
+
+public void deleteHelper(int userId) throws SQLException {
+    Connection conn = null;
+    PreparedStatement stmt = null;
+
+    try {
+        conn = DriverManager.getConnection("jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/projet_gei_008", "projet_gei_008", "ois3ohTh");
+        String query = "DELETE FROM helper WHERE id = ?";
+        stmt = conn.prepareStatement(query);
+        stmt.setInt(1, userId);
+        stmt.executeUpdate();
+    } finally {
+        closeResources(conn, stmt, null);
+    }
+}
+
+public void deleteAdmin(int userId) throws SQLException {
+    Connection conn = null;
+    PreparedStatement stmt = null;
+
+    try {
+        conn = DriverManager.getConnection("jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/projet_gei_008", "projet_gei_008", "ois3ohTh");
+        String query = "DELETE FROM admin WHERE id = ?";
+        stmt = conn.prepareStatement(query);
+        stmt.setInt(1, userId);
+        stmt.executeUpdate();
+    } finally {
+        closeResources(conn, stmt, null);
+    }
+}
+
+public void deleteAd(String title, String desc) throws SQLException {
+    Connection conn = null;
+    PreparedStatement stmt = null;
+
+    try {
+        conn = DriverManager.getConnection("jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/projet_gei_008", "projet_gei_008", "ois3ohTh");
+        String query = "DELETE FROM ad WHERE title = ? AND description = ?";
+        stmt = conn.prepareStatement(query);
+        stmt.setString(1, title);
+        stmt.setString(2, desc);
+        stmt.executeUpdate();
+    } finally {
+        closeResources(conn, stmt, null);
+    }
+}
+
 private void closeResources(Connection conn, PreparedStatement stmt, ResultSet rs) {
     try {
         if (rs != null) {

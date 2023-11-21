@@ -38,11 +38,13 @@
     <artifactId>mysql-connector-java</artifactId>
     <version>8.0.28</version>
 </dependency>
-      <dependency>
-          <groupId>unknown.binary</groupId>
-          <artifactId>AbsoluteLayout</artifactId>
-          <version>SNAPSHOT</version>
-      </dependency>
+      <!-- https://mvnrepository.com/artifact/org.netbeans.external/AbsoluteLayout -->
+<dependency>
+    <groupId>org.netbeans.external</groupId>
+    <artifactId>AbsoluteLayout</artifactId>
+    <version>RELEASE190</version>
+</dependency>
+
       <dependency>
           <groupId>com.miglayout</groupId>
           <artifactId>miglayout-swing</artifactId>
@@ -54,10 +56,7 @@
         <version>5.8.1</version> 
         <scope>test</scope>
     </dependency>
-      <dependencies>
-              
-        <!-- Autres dépendances -->
-      </dependencies>
+    
   </dependencies>
 
   <build>
@@ -82,14 +81,19 @@
           <version>2.22.1</version>
         </plugin>
         <plugin>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>3.0.2</version>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>3.1.0</version>
+            <configuration>
+                <archive>
+                    <manifest>
+                        <addClasspath>true</addClasspath>
+                        <mainClass>com.holpapp.views.loginForm</mainClass>
+                    </manifest>
+                </archive>
+            </configuration>
         </plugin>
-        <plugin>
-          <artifactId>maven-install-plugin</artifactId>
-          <version>2.5.2</version>
-        </plugin>
-        <plugin>
+            <plugin>
           <artifactId>maven-deploy-plugin</artifactId>
           <version>2.8.2</version>
         </plugin>
@@ -102,6 +106,40 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
+        <plugin>
+		<groupId>org.codehaus.mojo</groupId>
+		<artifactId>exec-maven-plugin</artifactId>
+		<version>1.6.0</version>
+		<configuration>
+			<mainClass>com.holpapp.views.loginForm</mainClass>
+		</configuration>
+</plugin>
+
+ <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <version>3.3.0</version>
+            <configuration>
+                <archive>
+                    <manifest>
+                        <mainClass>com.holpapp.views.loginForm</mainClass>
+                    </manifest>
+                </archive>
+                <descriptorRefs>
+                    <descriptorRef>jar-with-dependencies</descriptorRef>
+                </descriptorRefs>
+            </configuration>
+            <executions>
+                <execution>
+                    <id>make-assembly</id>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>single</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+
       </plugins>
     </pluginManagement>
   </build>

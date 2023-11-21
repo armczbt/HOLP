@@ -58,11 +58,11 @@ public class ChooseUserType extends javax.swing.JFrame {
         imagesPanel.setBackground(new java.awt.Color(255, 236, 245));
         imagesPanel.setPreferredSize(new java.awt.Dimension(824, 170));
 
-        neederImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/holpapp/views/helperIcon.png"))); // NOI18N
+        neederImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/helperIcon.png"))); // NOI18N
 
-        helperImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/holpapp/views/neederIcon.png"))); // NOI18N
+        helperImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/neederIcon.png"))); // NOI18N
 
-        adminImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/holpapp/views/adminIcon.png"))); // NOI18N
+        adminImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/adminIcon.png"))); // NOI18N
 
         javax.swing.GroupLayout imagesPanelLayout = new javax.swing.GroupLayout(imagesPanel);
         imagesPanel.setLayout(imagesPanelLayout);

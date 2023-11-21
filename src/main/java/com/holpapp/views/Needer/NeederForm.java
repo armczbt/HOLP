@@ -80,7 +80,7 @@ public class NeederForm extends javax.swing.JFrame {
 
         bottomPanel.setBackground(new java.awt.Color(255, 236, 245));
 
-        calendar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/holpapp/views/calendarIcon.png"))); // NOI18N
+        calendar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/calendarIcon.png"))); // NOI18N
 
         availabilityLabel.setFont(new java.awt.Font("Mluvka Medium", 0, 14)); // NOI18N
         availabilityLabel.setText("Availability (type your needs):");
@@ -157,7 +157,7 @@ public class NeederForm extends javax.swing.JFrame {
         imagesPanel.setBackground(new java.awt.Color(255, 236, 245));
         imagesPanel.setPreferredSize(new java.awt.Dimension(824, 170));
 
-        neederIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/holpapp/views/neederIcon.png"))); // NOI18N
+        neederIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/neederIcon.png"))); // NOI18N
 
         diseaseLabel.setFont(new java.awt.Font("Mluvka Medium", 0, 14)); // NOI18N
         diseaseLabel.setText("Diseases (type your diseases) :");

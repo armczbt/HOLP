@@ -74,7 +74,7 @@ public class AdminForm extends javax.swing.JFrame {
 
         bottomPanel.setBackground(new java.awt.Color(255, 236, 245));
 
-        buildingIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/holpapp/views/helperIcon.png"))); // NOI18N
+        buildingIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/helperIcon.png"))); // NOI18N
 
         linkedBuilding.setFont(new java.awt.Font("Mluvka Medium", 0, 14)); // NOI18N
         linkedBuilding.setText("Name of your linked building");
