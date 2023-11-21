@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import com.holpapp.controllers.DatabaseController;
 import com.holpapp.models.Helper;
 import com.holpapp.models.User;
-import com.holpapp.views.loginForm;
+import com.holpapp.views.LoginForm;
 
 /**
  *
@@ -279,7 +279,7 @@ public class HelperForm extends javax.swing.JFrame {
     
             if (added) {
                 JOptionPane.showMessageDialog(this, "Helper added successfully.");
-                loginForm loginForm = new loginForm();
+                LoginForm loginForm = new LoginForm();
                 loginForm.setVisible(true);
                 this.dispose();
             } else {

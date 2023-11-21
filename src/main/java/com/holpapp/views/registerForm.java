@@ -15,7 +15,7 @@ import com.holpapp.models.User;
  *
  * @author arman
  */
-public class registerForm extends javax.swing.JFrame {
+public class RegisterForm extends javax.swing.JFrame {
 
     private int nCount;
     private int snCount;
@@ -29,7 +29,7 @@ public class registerForm extends javax.swing.JFrame {
     /**
      * Creates new form Needer_Form
      */
-    public registerForm() {
+    public RegisterForm() {
         initComponents();
         nCount=0;
         snCount=0;
@@ -336,7 +336,7 @@ public class registerForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        loginForm loginForm = new loginForm();
+        LoginForm loginForm = new LoginForm();
         loginForm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_loginButtonActionPerformed
@@ -526,20 +526,20 @@ if(addressField.getText().isEmpty()){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(registerForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(registerForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(registerForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(registerForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new registerForm().setVisible(true);
+                new RegisterForm().setVisible(true);
             }
         });
     }

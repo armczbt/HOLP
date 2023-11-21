@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import com.holpapp.controllers.DatabaseController;
 import com.holpapp.models.Admin;
 import com.holpapp.models.User;
-import com.holpapp.views.loginForm;
+import com.holpapp.views.LoginForm;
 import com.holpapp.views.Needer.NeederForm;
 
 /**
@@ -198,7 +198,7 @@ public class AdminForm extends javax.swing.JFrame {
 
         if (added) {
             JOptionPane.showMessageDialog(this, "Admin added successfully.");
-            loginForm loginForm = new loginForm();
+            LoginForm loginForm = new LoginForm();
             loginForm.setVisible(true);
             this.dispose();
         } else {
