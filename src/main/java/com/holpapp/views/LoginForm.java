@@ -21,7 +21,7 @@ public class loginForm extends javax.swing.JFrame {
     private int pCount;
 
     /**
-     * Creates new form Needer_Formdd
+     * Creates new form Needer_Form
      */
     public loginForm() {
         initComponents();
